@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Crop Recommender - Results</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Crop Recommender </h1>
+        </div>
+        <div class="row">
+            <div class="banner">
+                <h1>We are your one stop Crop Recommendation System </h1>
+            </div>
+            <div class="column">
+                <h2>Results 📊</h2>
+                {% if prediction %}
+                <h2>The recommended crop for your farm is: {{ prediction }}</h2>
+                {% else %}
+                <p>Sorry, we could not make a recommendation based on the provided data. Please try again.</p>
+                {% endif %}
+                <form action="{{ url_for('home') }}">
+                    <button type="submit">Try again</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Crop Recommender</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Crop Recommender 🌱</h1>
+        </div>
+        <div class="row">
+            <div class="column info">
+                <div class="banner">
+                    <h1>We are your one stop Crop Recommendation System </h1>
+                </div>
+            </div>
+            <div class="column">
+                <h2>Let's find out best crop for you</h2>
+                <form method="post" action="{{ url_for('predict') }}">
+                    <div class="input-group">
+                        <label for="N">Nitrogen:</label>
+                        <input type="number" id="N" name="N" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="P">Phosporus:</label>
+                        <input type="number" id="P" name="P" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="K">Potassium:</label>
+                        <input type="number" id="K" name="K" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="temperature">Temperature:</label>
+                        <input type="number" id="temperature" name="temperature" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="humidity">Humidity:</label>
+                        <input type="number" id="humidity" name="humidity" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="ph">Ph:</label>
+                        <input type="number" id="ph" name="ph" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="rainfall">Rainfall:</label>
+                        <input type="number" id="rainfall" name="rainfall" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="submit" value="Predict">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="result">
+            {% if prediction %}
+            <h3>Results 🔍</h3>
+            <p>{{ prediction }} are recommended by the A.I for your farm.</p>
+            {% endif %}
+        </div>
+        <div class="warning">
+
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
